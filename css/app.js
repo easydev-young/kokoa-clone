@@ -25,19 +25,3 @@ window.addEventListener("online", handleWindowOnline);
 
 getClock();
 setInterval(getClock, 1000);
-
-let battery = navigator.battery || navigator.mozBattery || navigator.webkitBattery;
-
-function updateBatteryStatus() {
-    statusBattery.innerText = `{battery.level * 100}%`;
-
-    if (battery.charging) {
-        statusBattery.innerText = "charging";
-    }
-}
-
-if (battery != undefined) {
-    battery.addEventListener("chargingchange", updateBatteryStatus);
-    battery.addEventListener("levelchange", updateBatteryStatus);
-    updateBatteryStatus();
-}
